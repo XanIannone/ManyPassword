@@ -1,6 +1,7 @@
 # ManyPassword
  Generate, save, and view your passwords locally
 
+ 
  Mini Guide:
 
  Run 'ManyPassword.py'
