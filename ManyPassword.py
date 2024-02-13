@@ -1,11 +1,12 @@
-# Password Generator Project
 import random
-
+from data.art import logo
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
+
+print(logo)
 
 
 def scramble_password(string):
@@ -13,13 +14,15 @@ def scramble_password(string):
     random.shuffle(string)
     return ''.join(string)
 
+
 def save_passwords(password_list):
-    from Saved_Passwords import saved
+    from data.Saved_Passwords import saved
     reader = open('Saved_Passwords.py', 'w')
     for password in password_list:
         saved[password] = password_list[password]
     reader.write(f"saved = {saved}")
     reader.close()
+
 
 continue_running = True
 while continue_running:
@@ -31,9 +34,6 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
                             """)
     if selected_mode == "1":
         # password generation mode
-        from art import logo
-        print(logo)
-
         session_password_dict = {}
 
         continue_creating = True
@@ -78,7 +78,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
 
     elif selected_mode == "2":
         # View Password Mode
-        from Saved_Passwords import saved
+        from data.Saved_Passwords import saved
         for password in saved:
             print(f"{password}: {saved[password]}\n")
 
