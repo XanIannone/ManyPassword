@@ -16,6 +16,8 @@ def scramble_password(string):
 
 
 def save_passwords(password_list):
+    global password
+    global reader
     from data.Saved_Passwords import saved
     reader = open('Saved_Passwords.py', 'w')
     for password in password_list:
