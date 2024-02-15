@@ -1,5 +1,5 @@
 import random
-from data.art import logo
+from modules.data.art import logo
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
@@ -18,7 +18,7 @@ def scramble_password(string):
 def save_passwords(password_list):
     global password
     global reader
-    from data.Saved_Passwords import saved
+    from modules.data.Saved_Passwords import saved
     reader = open('Saved_Passwords.py', 'w')
     for password in password_list:
         saved[password] = password_list[password]
@@ -80,7 +80,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
 
     elif selected_mode == "2":
         # View Password Mode
-        from data.Saved_Passwords import saved
+        from modules.data.Saved_Passwords import saved
         for password in saved:
             print(f"{password}: {saved[password]}\n")
 
