@@ -1,11 +1,3 @@
-
-class Generator:
-    def scramble_password(self, unscrambled_string):
-        import random
-        string = list(unscrambled_string)
-        random.shuffle(string)
-        return ''.join(string)
-
 class SaveAndView:
     def view_passwords(self):
         from data.Saved_Passwords import saved
@@ -20,6 +12,3 @@ class SaveAndView:
             saved[password] = password_list[password]
         reader.write(f"saved = {saved}")
         reader.close()
-
-
-
