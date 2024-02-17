@@ -8,6 +8,7 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 print(logo)
 
+
 def scramble_password(string):
     string = list(string)
     random.shuffle(string)
@@ -95,7 +96,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
     elif selected_mode == "3":
         # Save Password Mode
         session_password_dict = {}
-        
+
         continue_creating = True
         while continue_creating:
             use_case = input("What website/application are you using this password for?\n")
