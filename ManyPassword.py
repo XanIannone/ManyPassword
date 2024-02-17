@@ -8,7 +8,6 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 print(logo)
 
-
 def scramble_password(string):
     string = list(string)
     random.shuffle(string)
@@ -58,12 +57,10 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
                 selected_symbols += (symbols[random.randint(0, len(symbols) - 1)])
 
             combined_string = (selected_letters + selected_numbers + selected_symbols)
-
             generated_password = scramble_password(combined_string)
             session_password_dict[use_case] = generated_password
 
             print(f"\nYour randomly generated password for {use_case}: {generated_password}")
-
             if input("Would you like to generate another password? (Yes/No):\n").lower() == "no":
                 continue_creating = False
 
@@ -74,16 +71,15 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
 
         if input("Would you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
-
         # saving passwords
         save_passwords(session_password_dict)
 
     elif selected_mode == "2":
         # View Password Mode
         from modules.data.Saved_Passwords import saved
+
         for password in saved:
             print(f"{password}: {saved[password]}\n")
-
         if len(saved) > 0:
             if input("Would you like to wipe your passwords? (Yes/No): ").lower() == "yes":
                 reader = open('Saved_Passwords.py', 'w')
@@ -92,26 +88,22 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
                 print("Your password list has been wiped.")
         else:
             print("You have no saved passwords to view.")
+
         if input("Would you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
 
     elif selected_mode == "3":
         # Save Password Mode
         session_password_dict = {}
-
+        
         continue_creating = True
         while continue_creating:
             use_case = input("What website/application are you using this password for?\n")
             password = input("Enter your password:\n")
-
             session_password_dict[use_case] = password
-
             print(f"Your password has been saved")
-
             if input("Would you like to save another password? (Yes/No):\n").lower() == "no":
                 continue_creating = False
-
         save_passwords(session_password_dict)
-
         if input("Would you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
