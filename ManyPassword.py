@@ -16,7 +16,7 @@ print(logo)
 
 def save_passwords(password_list):
     from modules.data.Saved_Passwords import saved
-    reader = open('Saved_Passwords.py', 'w')
+    reader = open(r'modules\data\Saved_Passwords.py', 'w')
     for password in password_list:
         saved[password] = password_list[password]
     reader.write(f"saved = {saved}")
@@ -61,14 +61,14 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
             print(f"{password}: {saved[password]}\n")
         if len(saved) > 0:
             if input("Would you like to wipe your passwords? (Yes/No): ").lower() == "yes":
-                reader = open('Saved_Passwords.py', 'w')
+                reader = open(r'modules\data\Saved_Passwords.py', 'w')
                 reader.write("saved = {}")
                 reader.close()
                 print("Your password list has been wiped.")
         else:
             print("You have no saved passwords to view.")
 
-        if input("Would you like to run the program again? (Yes/No):\n").lower() == "no":
+        if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
 
     elif selected_mode == "3":
@@ -84,5 +84,5 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
             if input("Would you like to save another password? (Yes/No):\n").lower() == "no":
                 continue_creating = False
         save_passwords(session_password_dict)
-        if input("Would you like to run the program again? (Yes/No):\n").lower() == "no":
+        if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
