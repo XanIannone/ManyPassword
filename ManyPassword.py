@@ -14,15 +14,7 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 print(logo)
 
 
-def scramble_password(string):
-    string = list(string)
-    random.shuffle(string)
-    return ''.join(string)
-
-
 def save_passwords(password_list):
-    global password
-    global reader
     from modules.data.Saved_Passwords import saved
     reader = open('Saved_Passwords.py', 'w')
     for password in password_list:
@@ -45,28 +37,9 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
 
         continue_creating = True
         while continue_creating:
-            use_case = input("What website/application are you using this password for?\n")
-            nr_letters = int(input("How many letters would you like in your password?\n"))
-            nr_numbers = int(input(f"How many numbers would you like?\n"))
-            nr_symbols = int(input(f"How many symbols would you like?\n"))
+            password_generator.create_password()
+            session_password_dict[password_generator.use_case] = password_generator.generated_password
 
-            selected_letters = ""
-            selected_numbers = ""
-            selected_symbols = ""
-
-            # picks random characters of each type
-            for n in range(1, nr_letters + 1):
-                selected_letters += (letters[random.randint(0, len(letters) - 1)])
-            for n in range(1, nr_numbers + 1):
-                selected_numbers += (numbers[random.randint(0, len(numbers) - 1)])
-            for n in range(1, nr_symbols + 1):
-                selected_symbols += (symbols[random.randint(0, len(symbols) - 1)])
-
-            combined_string = (selected_letters + selected_numbers + selected_symbols)
-            generated_password = scramble_password(combined_string)
-            session_password_dict[use_case] = generated_password
-
-            print(f"\nYour randomly generated password for {use_case}: {generated_password}")
             if input("Would you like to generate another password? (Yes/No):\n").lower() == "no":
                 continue_creating = False
 
@@ -75,7 +48,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
             for password in session_password_dict:
                 print(f"{password}: {session_password_dict[password]}")
 
-        if input("Would you like to run the program again? (Yes/No):\n").lower() == "no":
+        if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
         # saving passwords
         save_passwords(session_password_dict)
