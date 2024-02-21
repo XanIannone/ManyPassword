@@ -35,13 +35,7 @@ class Generator:
         print(f"\nYour randomly generated password for {Generator.use_case}: {Generator.generated_password}")
 
 
-class SaveView:
-    def view_passwords(self):
-        from data.Saved_Passwords import saved
-        for password in saved:
-            print(f"{password}: {saved[password]}\n")
-
-
+class Save:
     def save_passwords(self, password_list):
         from modules.data.Saved_Passwords import saved
         reader = open(r'modules\data\Saved_Passwords.py', 'w')
@@ -50,3 +44,9 @@ class SaveView:
         reader.write(f"saved = {saved}")
         reader.close()
 
+
+class View:
+    def view_passwords(self):
+        from data.Saved_Passwords import saved
+        for password in saved:
+            print(f"{password}: {saved[password]}\n")

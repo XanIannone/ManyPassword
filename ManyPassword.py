@@ -1,9 +1,10 @@
 import random
 from modules.data.art import logo
-from modules.classes import Generator, SaveView
+from modules.classes import Generator, Save, View
 
-password_generator = Generator()
-password_saveview = SaveView()
+mode_1 = Generator()
+mode_2 = Save()
+mode_3 = View()
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
@@ -37,8 +38,8 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
 
         continue_creating = True
         while continue_creating:
-            password_generator.create_password()
-            session_password_dict[password_generator.use_case] = password_generator.generated_password
+            mode_1.create_password()
+            session_password_dict[mode_1.use_case] = mode_1.generated_password
 
             if input("Would you like to generate another password? (Yes/No):\n").lower() == "no":
                 continue_creating = False
@@ -83,6 +84,6 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
             print(f"Your password has been saved")
             if input("Would you like to save another password? (Yes/No):\n").lower() == "no":
                 continue_saving = False
-        save_passwords(session_password_dict)
+        mode_2.save_passwords(session_password_dict)
         if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
