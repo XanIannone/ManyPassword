@@ -14,16 +14,6 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 print(logo)
 
-
-def save_passwords(password_list):
-    from modules.data.Saved_Passwords import saved
-    reader = open(r'modules\data\Saved_Passwords.py', 'w')
-    for password in password_list:
-        saved[password] = password_list[password]
-    reader.write(f"saved = {saved}")
-    reader.close()
-
-
 continue_running = True
 while continue_running:
     # program start
@@ -52,7 +42,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
         if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
         # saving passwords
-        save_passwords(session_password_dict)
+        mode_2.save_passwords(session_password_dict)
 
     elif selected_mode == "2":
         # View Password Mode
