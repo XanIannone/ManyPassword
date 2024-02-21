@@ -50,3 +50,9 @@ class View:
         from data.Saved_Passwords import saved
         for password in saved:
             print(f"{password}: {saved[password]}\n")
+    def wipe_passwords(self):
+        if input("Would you like to wipe your passwords? (Yes/No): ").lower() == "yes":
+            reader = open(r'modules\data\Saved_Passwords.py', 'w')
+            reader.write("saved = {}")
+            reader.close()
+            print("Your password list has been wiped.")
