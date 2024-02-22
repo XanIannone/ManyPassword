@@ -3,8 +3,8 @@ from modules.data.art import logo
 from modules.classes import Generator, Save, View
 
 mode_1 = Generator()
-mode_2 = Save()
-mode_3 = View()
+mode_2 = View()
+mode_3 = Save()
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
            'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
@@ -42,7 +42,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
         if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
         # saving passwords
-        mode_2.save_passwords(session_password_dict)
+        mode_3.save_passwords(session_password_dict)
 
     elif selected_mode == "2":
         # View Password Mode
@@ -51,11 +51,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
         for password in saved:
             print(f"{password}: {saved[password]}\n")
         if len(saved) > 0:
-            if input("Would you like to wipe your passwords? (Yes/No): ").lower() == "yes":
-                reader = open(r'modules\data\Saved_Passwords.py', 'w')
-                reader.write("saved = {}")
-                reader.close()
-                print("Your password list has been wiped.")
+            mode_2.wipe_passwords()
         else:
             print("You have no saved passwords to view.")
 
@@ -74,6 +70,6 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
             print(f"Your password has been saved")
             if input("Would you like to save another password? (Yes/No):\n").lower() == "no":
                 continue_saving = False
-        mode_2.save_passwords(session_password_dict)
+        mode_3.save_passwords(session_password_dict)
         if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False
