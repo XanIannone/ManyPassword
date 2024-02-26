@@ -1,4 +1,3 @@
-import random
 from modules.data.art import logo
 from modules.classes import Generator, Save, View
 
