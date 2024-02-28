@@ -7,7 +7,7 @@
  Run 'ManyPassword.py'
 
  Mode 1: Password Generation Mode
-     -Allows you to generate randomized passwords with a selectable customizable amount of each character type
+     -Allows you to generate randomized passwords with a selectable amount of each character type
      -Generated passwords are automatically saved to your password list that can be viewed in mode 2
 
  Mode 2: Password Viewing Mode
