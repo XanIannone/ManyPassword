@@ -60,15 +60,7 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
     elif selected_mode == "3":
         # Save Password Mode
         session_password_dict = {}
+        mode_3.add_passwords()
 
-        continue_saving = True
-        while continue_saving:
-            use_case = input("What website/application are you using this password for?\n")
-            password = input("Enter your password:\n")
-            session_password_dict[use_case] = password
-            print(f"Your password has been saved")
-            if input("Would you like to save another password? (Yes/No):\n").lower() == "no":
-                continue_saving = False
-        mode_3.save_passwords(session_password_dict)
         if input("\nWould you like to run the program again? (Yes/No):\n").lower() == "no":
             continue_running = False

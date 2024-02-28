@@ -36,6 +36,25 @@ class Generator:
 
 
 class Save:
+    def add_passwords(self):
+        session_password_dict = {}
+
+        continue_saving = True
+        while continue_saving:
+            use_case = input("What website/application are you using this password for?\n")
+            password = input("Enter your password:\n")
+            session_password_dict[use_case] = password
+            print(f"Your password has been saved")
+            if input("Would you like to save another password? (Yes/No):\n").lower() == "no":
+                continue_saving = False
+
+            from modules.data.Saved_Passwords import saved
+            reader = open(r'modules\data\Saved_Passwords.py', 'w')
+            for password in session_password_dict:
+                saved[password] = session_password_dict[password]
+            reader.write(f"saved = {saved}")
+            reader.close()
+
     def save_passwords(self, password_list):
         from modules.data.Saved_Passwords import saved
         reader = open(r'modules\data\Saved_Passwords.py', 'w')
