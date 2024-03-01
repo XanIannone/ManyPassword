@@ -46,9 +46,9 @@ Generate New Passwords || View Saved Passwords || Save New Passwords
     elif selected_mode == "2":
         # View Password Mode
         from modules.data.Saved_Passwords import saved
-
         for password in saved:
             print(f"{password}: {saved[password]}\n")
+
         if len(saved) > 0:
             mode_2.wipe_passwords()
         else:
